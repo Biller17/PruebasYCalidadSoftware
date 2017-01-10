@@ -11,4 +11,5 @@ int factorial(int number) {
 }
 
 void main(){
+  factorial(9);
 }
