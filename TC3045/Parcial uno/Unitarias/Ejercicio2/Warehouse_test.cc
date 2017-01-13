@@ -17,15 +17,15 @@ private:
     time_t tiempo;
 };
 
-class WarehouseFixture : public TimeFixture
-{
+class WarehouseFixture : public TimeFixture{
 public:
+  static Warehouse<int> *a;
     void SetUp(){
       TimeFixture::SetUp();
+      a->add(1);
     }
-    void TearDown()
-    {
-
+    void TearDown(){
+      TimeFixture::TearDown();
     }
     static void SetUpTestCase()
     {
@@ -35,17 +35,25 @@ public:
     {
         delete a;
     }
-
-    static Warehouse<int> *a;
 };
 
-Warehouse<int>* WarehouseFixture::a = 0;
+Warehouse<int>* WarehouseFixture::a = nullptr;
 
 TEST_F(WarehouseFixture, Constructor){
-    a->getCapacity();
+    ASSERT_EQ(10, a->getCapacity());
 }
 
+TEST_F(WarehouseFixture, Agregar){
+  a->add(1);
+  ASSERT_EQ(3, a->size());
+}
 
-// TEST_F(WarehouseFixture, Agregar){
-//   a->add(1);
-// }
+TEST_F(WarehouseFixture, isEmpty){
+  ASSERT_EQ(true, a->empty());
+  a->add(1);
+  ASSERT_EQ(false, a->empty());
+}
+
+TEST_F(WarehouseFixture, GetSize){
+  ASSERT_EQ(10, a->size());
+}

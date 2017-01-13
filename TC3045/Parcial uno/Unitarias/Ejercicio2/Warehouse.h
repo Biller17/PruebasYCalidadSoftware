@@ -23,7 +23,7 @@ public:
   }
 
   void add(T value){
-    data.push_back(end);
+    data.push_back(value);
   }
 
   void borrar(int position){
