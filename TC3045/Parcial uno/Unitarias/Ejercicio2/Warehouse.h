@@ -8,6 +8,7 @@ class Warehouse{
 private:
   int capacity;
 public:
+  std::vector<T> data;
   Warehouse(int n){
     vector<T> data(n);
   }
@@ -25,8 +26,8 @@ public:
     data.push_back(end);
   }
 
-  void delete(int position){
-    data.erase(queue.begin()+ position - 1);
+  void borrar(int position){
+    data.erase(data.begin()+ position - 1);
   }
   bool empty(){
     return data.empty();
