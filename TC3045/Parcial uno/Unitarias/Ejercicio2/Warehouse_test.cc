@@ -44,3 +44,8 @@ Warehouse<int>* WarehouseFixture::a = 0;
 TEST_F(WarehouseFixture, Constructor){
     a->getCapacity();
 }
+
+
+// TEST_F(WarehouseFixture, Agregar){
+//   a->add(1);
+// }
