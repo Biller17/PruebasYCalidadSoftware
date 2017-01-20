@@ -30,8 +30,11 @@ public:
     }
     file.close();
   }
-  void decrypt(std::string encrypted, int offset){
-
+  string decrypt(std::string encrypted, int offset){
+    for(int i = 0; i < encrypted.size(); i++){
+      encrypted[i]+=offset;
+    }
+    return encrypted;
   }
 
   void search(std::string word){
