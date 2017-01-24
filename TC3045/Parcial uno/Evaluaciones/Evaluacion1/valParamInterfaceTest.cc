@@ -6,18 +6,13 @@ typedef Base* factoryMethod();//CREANDO la definicion de una funcion con un nomb
 
 
 Base* instance1(){
-  return new Child1;
+  return new BubbleSort;
 }
 
-
-Base* instance2(){
-  return new Child2;
-}
-
-template<int parameter>
+/*template<int parameter>
 Base* instanceWithConstParam(){
   return new Child3(parameter);
-}
+}*/
 
 class Fixture :public testing::TestWithParam<factoryMethod*>{
 protected:
@@ -34,8 +29,9 @@ public:
 };
 
 TEST_P(Fixture, testName){
-  this->instance2Test->doSomething();
+  for(int i = 0; i < 10; i++)
+    EXPECT_EQ(i,this-> instance2Test-> prueba[i]);
 }
 
 
-INSTANTIATE_TEST_CASE_P(CaseName, Fixture, testing::Values(&instance1, &instance2, &instanceWithConstParam<10>));
+INSTANTIATE_TEST_CASE_P(CaseName, Fixture, testing::Values(&instance1));
